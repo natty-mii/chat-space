@@ -1,0 +1,36 @@
+.chat-main
+  .group-info
+    .header-left
+      .header-left__group-name test
+      .header-left__group-member Member : masa
+    = link_to "#", class: "edt-btn" do
+      Edit
+  .message-list
+    .message-box
+      .user-info 
+        .user-info__post-name masa
+        .user-info__post-date 2019/11/20(wed)17:43:01
+      .message
+        .message__content hello
+    .message-box
+      .user-info 
+        .user-info__post-name masa
+        .user-info__post-date 2019/11/20(wed)17:43:01
+      .message
+        .message__content hello
+    .message-box
+      .user-info 
+        .user-info__post-name masa
+        .user-info__post-date 2019/11/20(wed)17:43:01
+      .message
+        .message__content hello
+
+
+  .message-form
+    %form.new-message
+      .input-box
+        %input{class: "input-content", type: "text", placeholder: "type a message"}
+        %label{class: "input-image"}
+          =icon('far', 'image')
+          %input{class: "input-file", type: "file"}
+      %input{class: "submit-btn", type: "submit", name: "commit", value: "Send"}
