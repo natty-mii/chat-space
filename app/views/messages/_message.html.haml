@@ -1,0 +1,12 @@
+.message-box
+  .user-info 
+    .user-info__post-name
+    = message.user.name
+    .user-info__post-date
+    = message.created_at.strftime('%Y年%m月%d日 %H:%M:%S')
+  - if message.content
+    .message
+      .message__content
+      = message.content
+    - if message.image
+      = image_tag message.image
