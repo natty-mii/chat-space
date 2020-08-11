@@ -1,8 +1,8 @@
-FactoryBost.define do
+FactoryBot.define do
   factory :message do
-    content             {Faker::lorem.sentence}
-    image               {File.open("#{rails.root")/public/images/test_images.jpg}
-    user_id             {}
-    group_id            {}
+    content {Faker::Lorem.sentence}
+    image {File.open("#{Rails.root}/public/images/test_image.jpg")}
+    user
+    group
   end
 end
