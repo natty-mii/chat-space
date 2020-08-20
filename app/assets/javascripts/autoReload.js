@@ -37,35 +37,10 @@ $(function(){
                   return html;
     };
   }
-    
-      $('.Form').on('submit', function(e){
-        e.preventDefault();
-        let formData = new FormData(this);
-        let url = $(this).attr('action');
-        $.ajax({
-          url: url,
-          type: "POST",
-          data: formData,
-          dataType: 'json',
-          processData: false,
-          contentType: false
-        })
-        .done(function(data){
-          let html = buildHTML(data);
-          $('.MessageField').append(html);      
-          $('form')[0].reset();
-          $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
-          $('.Form__submit').prop("disabled", false);
-        })
-        .fail(function() {
-          alert("メッセージ送信に失敗しました");
-          $('.Form__submit').prop("disabled", false);
-        });
-      });
-
+  
   let reloadMessages = function() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-    let last_message_id = $('.MessageBox:last').data("message-id") || 0;
+    let last_message_id = $('.message-box:last').data("message-id") || 0;
     $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: "api/messages",
@@ -85,8 +60,8 @@ $(function(){
           insertHTML += buildHTML(message)
         });
         //メッセージが入ったHTMLに、入れ物ごと追加
-        $('.MessageField').append(insertHTML);
-        $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
+        $('.message-list').append(insertHTML);
+        $('.message-list').animate({ scrollTop: $('.message-list')[0].scrollHeight});
       }
     })
     .fail(function() {
