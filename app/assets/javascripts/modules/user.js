@@ -39,8 +39,10 @@ $(function() {
     })
     .done(function(users) {
       $("#UserSearchResult").empty();
+      let addAlreadyMember = $(".ChatMember").text();
       if (users.length !== 0) {
-        users.forEach(function(user) {
+        users.forEach(function(user,index) {
+          if (addAlreadyMember.indexOf(user.name) == -1)
           addUser(user);
         });
       } else if (input.length == 0) {
